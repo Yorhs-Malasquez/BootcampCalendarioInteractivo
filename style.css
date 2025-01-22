@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Importa la fuente "Roboto" desde Google Fonts*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Aplica a todos los elementos:
+- Elimina márgenes y padding predeterminados.
+- Establece `box-sizing` como `border-box`, para incluir padding y borde en el tamaño total.
+- Asigna la fuente "Roboto" como fuente principal. */
+
+ul {
+    list-style: none;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: center;
+    min-height: 100vh;
+    background: #f4f4f9;
+}
+/* Se define el diseño del cuerpo:
+- Utiliza `flexbox` para centrar elementos horizontal y verticalmente.
+- Agrega padding horizontal de 10px.
+- Establece un mínimo de altura igual al alto de la ventana (`100vh`).
+- Usa un color de fondo claro (#f4f4f9). */
+
+.container-principal {
+    width: 700px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;/* Previene que elementos desbordados sean visibles */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    justify-content: space-between;
+    background: #007bff;
+    color: white;
+}
+
+header .current-date {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+header .icons {
+    display: flex;
+}
+
+header .icons span {
+    height: 40px;
+    width: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 2rem;
+    margin: 0 1px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 38px;
+    color: white;
+    font-size: 1.5rem;
+    user-select: none;
+    border-radius: 50%;
+    transition: background 0.3s;
+    /* Suaviza los cambios al interactuar */
+}
+
+header .icons span:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+header .icons span:last-child {
+    margin-right: -10px;
+}
+
+.calendar {
+    padding: 20px;
+}
+
+.calendar ul {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.calendar .weeks {
+    text-align: center;
+    font-weight: bold;
+    background: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    /* Línea divisoria */
+}
+
+.calendar .weeks li {
+    font-weight: 600;
+    color: #444;
+    padding: 10px 0;
+    width: calc(100% / 7);
+    /* Ancho uniforme para cada día de la semana */
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+
+.calendar .days {
+    /* margin-top: 10px; */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-top: 10px;
+}
+/* Organiza los días del mes en una cuadrícula de 7 columnas. */
+
+.calendar .days li {
+    position: relative;
+    height: 80px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.days li.inactive {
+    background: #f9f9f9;
+    color: #bbb;
+    cursor: default;
+}
+
+.days li.active {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    border-color: #0056b3;
+}
+
+.calendar .days li.active:hover {
+    background: #0056b3;
+}
+
+.calendar .days li:hover {
+
+    background: #eaf4ff;
+    color: #007bff;
+}
+
+
+.calendar .days li::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 5px;
+    z-index: -1;
+    transition: background 0.3s;
+    /* background: rgba(255, 0, 0, 0.2); */
+}
+/* Agrega un contorno decorativo detrás de cada día. */
+
+
+.calendar .days li.active::before {
+    background: #0056b3;
+}
